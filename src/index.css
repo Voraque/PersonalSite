@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400&family=Crimson+Pro:ital,wght@0,300;1,300&family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Space+Mono:ital,wght@0,400;1,400&family=Syne:wght@400;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --ink: #1a1612;
+  --parchment: #f0ead8;
+  --warm-mid: #c4a882;
+  --rust: #8b4a2b;
+  --moss: #4a5240;
+  --chrome: #d4c9b8;
+  --void: #0d0b09;
+  --glow: #e8c87a;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Crimson Pro', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  background: var(--void);
+  color: var(--parchment);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+/* Grain overlay CSS fallback */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px;
+  animation: grain 0.5s steps(1) infinite;
+}
+
+@keyframes grain {
+
+  0%,
+  100% {
+    background-position: 0 0;
+  }
+
+  10% {
+    background-position: -5% -10%;
+  }
+
+  20% {
+    background-position: -15% 5%;
+  }
+
+  30% {
+    background-position: 7% -25%;
+  }
+
+  40% {
+    background-position: 20% 10%;
+  }
+
+  50% {
+    background-position: -5% 15%;
+  }
+
+  60% {
+    background-position: 15% -5%;
+  }
+
+  70% {
+    background-position: 0% 20%;
+  }
+
+  80% {
+    background-position: -20% 0%;
+  }
+
+  90% {
+    background-position: 10% 5%;
+  }
+}
+
+/* Base Panel Layout */
+.panel {
+  position: relative;
+  overflow: hidden;
+  background: var(--void);
+}

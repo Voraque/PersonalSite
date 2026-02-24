@@ -1,0 +1,34 @@
+.panel-swatches {
+    grid-column: 3;
+    grid-row: 1;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+}
+
+.swatch {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    padding: 10px 14px;
+    position: relative;
+    transition: background-color 0.3s ease;
+}
+
+.swatch-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.swatch-hex {
+    position: absolute;
+    right: 14px;
+    bottom: 10px;
+    font-family: var(--font-mono);
+    font-size: 9px;
+    opacity: 0.4;
+}

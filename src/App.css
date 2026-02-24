@@ -1,0 +1,53 @@
+.moodboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  gap: 2px;
+  min-height: 100vh;
+  padding: 2px;
+}
+
+/* =================== MOODBOARD HEADER =================== */
+.moodboard-header {
+  grid-column: 1 / 4;
+  padding: 20px 24px;
+  background: var(--void);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(196, 168, 130, 0.08);
+}
+
+.moodboard-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(196, 168, 130, 0.4);
+}
+
+.moodboard-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: rgba(196, 168, 130, 0.25);
+}
+
+/* Scanline hover effect on panels */
+.panel:hover>.scanlines {
+  opacity: 1;
+}
+
+.scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s;
+  background: repeating-linear-gradient(0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px);
+  z-index: 10;
+}

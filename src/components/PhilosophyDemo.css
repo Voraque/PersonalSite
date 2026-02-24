@@ -1,0 +1,29 @@
+.panel-philosophy {
+    grid-column: 3;
+    grid-row: 3;
+    min-height: 200px;
+    background: var(--moss);
+    background: linear-gradient(135deg, #2a2d24 0%, #1a1c16 100%);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.philosophy-quote {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: rgba(240, 234, 216, 0.8);
+}
+
+.philosophy-attribution {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(196, 168, 130, 0.4);
+    margin-top: 16px;
+}

@@ -1,0 +1,143 @@
+.panel-hero {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    height: 480px;
+    background: #0f0d0a;
+    display: flex;
+    align-items: flex-end;
+    padding: 48px;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 80% 60% at 30% 40%, rgba(139, 74, 43, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 80% at 70% 20%, rgba(74, 82, 64, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 40% at 50% 80%, rgba(196, 168, 130, 0.1) 0%, transparent 50%);
+}
+
+/* Simulated photograph — abstract forest light */
+.hero-photo {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(160deg, transparent 30%, rgba(139, 74, 43, 0.08) 60%, transparent 80%),
+        repeating-linear-gradient(87deg,
+            transparent,
+            transparent 4px,
+            rgba(196, 168, 130, 0.015) 4px,
+            rgba(196, 168, 130, 0.015) 5px);
+}
+
+/* Light leak */
+.hero-photo::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: 5%;
+    width: 180px;
+    height: 500px;
+    background: linear-gradient(180deg, rgba(232, 200, 122, 0.12) 0%, rgba(200, 120, 60, 0.06) 40%, transparent 70%);
+    transform: rotate(-8deg);
+    filter: blur(30px);
+}
+
+/* Chromatic aberration title */
+.hero-title {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-display);
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--parchment);
+}
+
+.hero-title .glitch-word {
+    position: relative;
+    display: inline-block;
+}
+
+.hero-title .glitch-word::before,
+.hero-title .glitch-word::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+.hero-title .glitch-word:hover::before {
+    opacity: 0.7;
+    color: #ff6b6b;
+    transform: translate(-2px, 0);
+    animation: glitch-r 0.3s steps(2) infinite;
+}
+
+.hero-title .glitch-word:hover::after {
+    opacity: 0.7;
+    color: #6bffff;
+    transform: translate(2px, 0);
+    animation: glitch-b 0.3s steps(2) infinite;
+}
+
+@keyframes glitch-r {
+    0% {
+        clip-path: inset(20% 0 60% 0);
+        transform: translate(-3px, 1px);
+    }
+
+    33% {
+        clip-path: inset(50% 0 20% 0);
+        transform: translate(2px, -1px);
+    }
+
+    66% {
+        clip-path: inset(10% 0 70% 0);
+        transform: translate(-1px, 2px);
+    }
+
+    100% {
+        clip-path: inset(30% 0 40% 0);
+        transform: translate(-3px, 0);
+    }
+}
+
+@keyframes glitch-b {
+    0% {
+        clip-path: inset(60% 0 10% 0);
+        transform: translate(3px, -1px);
+    }
+
+    33% {
+        clip-path: inset(30% 0 50% 0);
+        transform: translate(-2px, 1px);
+    }
+
+    66% {
+        clip-path: inset(70% 0 5% 0);
+        transform: translate(1px, -2px);
+    }
+
+    100% {
+        clip-path: inset(40% 0 30% 0);
+        transform: translate(3px, 0);
+    }
+}
+
+.hero-sub {
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    z-index: 2;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    opacity: 0.7;
+    text-align: right;
+    line-height: 1.8;
+}

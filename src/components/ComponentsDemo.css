@@ -1,0 +1,199 @@
+.panel-components {
+    grid-column: 1 / 4;
+    grid-row: 4;
+    background: #0e0c09;
+    padding: 48px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.component-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.component-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(196, 168, 130, 0.4);
+    margin-bottom: 4px;
+}
+
+/* Nav link style */
+.demo-nav-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    opacity: 0.6;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    position: relative;
+    display: inline-block;
+}
+
+.demo-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--glow);
+    transition: width 0.3s ease;
+}
+
+.demo-nav-link:hover {
+    opacity: 1;
+}
+
+.demo-nav-link:hover::after {
+    width: 100%;
+}
+
+/* Button styles */
+.demo-btn {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border: 1px solid rgba(196, 168, 130, 0.3);
+    background: transparent;
+    color: var(--parchment);
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.demo-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(196, 168, 130, 0.08);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.demo-btn:hover::before {
+    transform: scaleX(1);
+}
+
+.demo-btn:hover {
+    border-color: rgba(196, 168, 130, 0.7);
+}
+
+.demo-btn-solid {
+    background: var(--rust);
+    border-color: var(--rust);
+}
+
+.demo-btn-solid:hover {
+    background: #a05535;
+    border-color: #a05535;
+}
+
+/* Tag */
+.demo-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    background: rgba(196, 168, 130, 0.1);
+    color: var(--warm-mid);
+    border: 1px solid rgba(196, 168, 130, 0.2);
+}
+
+.demo-tag::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--glow);
+    flex-shrink: 0;
+}
+
+/* Input */
+.demo-input {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(196, 168, 130, 0.2);
+    color: var(--parchment);
+    padding: 8px 0;
+    width: 180px;
+    outline: none;
+    transition: border-color 0.3s;
+    letter-spacing: 0.05em;
+}
+
+.demo-input:focus {
+    border-bottom-color: var(--glow);
+}
+
+.demo-input::placeholder {
+    color: rgba(196, 168, 130, 0.3);
+}
+
+/* Horizontal rule style */
+.demo-rule {
+    width: 180px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--rust), transparent);
+    opacity: 0.6;
+}
+
+/* Progress bar element */
+.demo-progress {
+    width: 180px;
+    height: 1px;
+    background: rgba(196, 168, 130, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.demo-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--rust), var(--glow));
+}
+
+.prismatic-demo {
+    width: 160px;
+    height: 80px;
+    position: relative;
+    overflow: hidden;
+    background: #0a0907;
+}
+
+.prismatic-blur {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255, 100, 80, 0.3) 0%, rgba(255, 200, 80, 0.2) 25%, rgba(80, 255, 180, 0.15) 50%, rgba(80, 120, 255, 0.2) 75%, rgba(200, 80, 255, 0.15) 100%);
+    filter: blur(8px);
+}
+
+.prismatic-texture {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(87deg, transparent, transparent 3px, rgba(255, 255, 255, 0.02) 3px, rgba(255, 255, 255, 0.02) 4px);
+}

@@ -1,0 +1,33 @@
+.panel-lightleak {
+    grid-column: 1 / 4;
+    grid-row: 5;
+    height: 120px;
+    background: var(--void);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lightleak-bar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse 20% 200% at 15% 50%, rgba(232, 200, 122, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 15% 200% at 45% 50%, rgba(200, 100, 60, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 25% 200% at 75% 50%, rgba(100, 180, 200, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 10% 200% at 90% 50%, rgba(200, 150, 60, 0.05) 0%, transparent 60%);
+}
+
+.lightleak-text {
+    position: relative;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(240, 234, 216, 0.3);
+    z-index: 1;
+}

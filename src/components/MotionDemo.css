@@ -1,0 +1,58 @@
+.panel-motion {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    min-height: 200px;
+    background: #0c0a08;
+    display: flex;
+    align-items: center;
+    padding: 40px 48px;
+    gap: 48px;
+    position: relative;
+    overflow: hidden;
+}
+
+.motion-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--warm-mid), transparent);
+    opacity: 0.15;
+}
+
+.motion-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.motion-label {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    opacity: 0.5;
+}
+
+.motion-description {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--parchment);
+    line-height: 1.3;
+}
+
+.motion-description em {
+    font-style: italic;
+    color: var(--warm-mid);
+}
+
+.motion-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(196, 168, 130, 0.2);
+    flex-shrink: 0;
+}

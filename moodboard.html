@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NicholasDvorak.com — Moodboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@300;400&family=Crimson+Pro:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1612;
+    --parchment: #f0ead8;
+    --warm-mid: #c4a882;
+    --rust: #8b4a2b;
+    --moss: #4a5240;
+    --chrome: #d4c9b8;
+    --void: #0d0b09;
+    --glow: #e8c87a;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--void);
+    color: var(--parchment);
+    font-family: 'Crimson Pro', Georgia, serif;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    background: var(--glow);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s;
+    mix-blend-mode: difference;
+  }
+  .cursor-trail {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(232, 200, 122, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.25s ease, left 0.15s ease, top 0.15s ease;
+  }
+
+  /* Grain overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 128px;
+    animation: grain 0.5s steps(1) infinite;
+  }
+
+  @keyframes grain {
+    0%, 100% { background-position: 0 0; }
+    10% { background-position: -5% -10%; }
+    20% { background-position: -15% 5%; }
+    30% { background-position: 7% -25%; }
+    40% { background-position: 20% 10%; }
+    50% { background-position: -5% 15%; }
+    60% { background-position: 15% -5%; }
+    70% { background-position: 0% 20%; }
+    80% { background-position: -20% 0%; }
+    90% { background-position: 10% 5%; }
+  }
+
+  /* =================== LAYOUT =================== */
+  .moodboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 2px;
+    min-height: 100vh;
+    padding: 2px;
+  }
+
+  /* =================== PANEL BASE =================== */
+  .panel {
+    position: relative;
+    overflow: hidden;
+    background: var(--void);
+  }
+
+  /* =================== HERO PANEL =================== */
+  .panel-hero {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    height: 480px;
+    background: #0f0d0a;
+    display: flex;
+    align-items: flex-end;
+    padding: 48px;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 30% 40%, rgba(139,74,43,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 80% at 70% 20%, rgba(74,82,64,0.3) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 50% 80%, rgba(196,168,130,0.1) 0%, transparent 50%);
+  }
+
+  /* Simulated photograph — abstract forest light */
+  .hero-photo {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(160deg, transparent 30%, rgba(139,74,43,0.08) 60%, transparent 80%),
+      repeating-linear-gradient(
+        87deg,
+        transparent,
+        transparent 4px,
+        rgba(196,168,130,0.015) 4px,
+        rgba(196,168,130,0.015) 5px
+      );
+  }
+
+  /* Light leak */
+  .hero-photo::after {
+    content: '';
+    position: absolute;
+    top: -20%;
+    right: 5%;
+    width: 180px;
+    height: 500px;
+    background: linear-gradient(180deg, rgba(232,200,122,0.12) 0%, rgba(200,120,60,0.06) 40%, transparent 70%);
+    transform: rotate(-8deg);
+    filter: blur(30px);
+  }
+
+  /* Chromatic aberration title */
+  .hero-title {
+    position: relative;
+    z-index: 2;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--parchment);
+  }
+
+  .hero-title .glitch-word {
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero-title .glitch-word::before,
+  .hero-title .glitch-word::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+  }
+
+  .hero-title .glitch-word:hover::before {
+    opacity: 0.7;
+    color: #ff6b6b;
+    transform: translate(-2px, 0);
+    animation: glitch-r 0.3s steps(2) infinite;
+  }
+  .hero-title .glitch-word:hover::after {
+    opacity: 0.7;
+    color: #6bffff;
+    transform: translate(2px, 0);
+    animation: glitch-b 0.3s steps(2) infinite;
+  }
+
+  @keyframes glitch-r {
+    0% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 1px); }
+    33% { clip-path: inset(50% 0 20% 0); transform: translate(2px, -1px); }
+    66% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 2px); }
+    100% { clip-path: inset(30% 0 40% 0); transform: translate(-3px, 0); }
+  }
+
+  @keyframes glitch-b {
+    0% { clip-path: inset(60% 0 10% 0); transform: translate(3px, -1px); }
+    33% { clip-path: inset(30% 0 50% 0); transform: translate(-2px, 1px); }
+    66% { clip-path: inset(70% 0 5% 0); transform: translate(1px, -2px); }
+    100% { clip-path: inset(40% 0 30% 0); transform: translate(3px, 0); }
+  }
+
+  .hero-sub {
+    position: absolute;
+    bottom: 48px;
+    right: 48px;
+    z-index: 2;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    opacity: 0.7;
+    text-align: right;
+    line-height: 1.8;
+  }
+
+  /* =================== COLOR SWATCH PANEL =================== */
+  .panel-swatches {
+    grid-column: 3;
+    grid-row: 1;
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .swatch {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    padding: 10px 14px;
+    position: relative;
+  }
+
+  .swatch-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    z-index: 1;
+  }
+
+  .swatch-hex {
+    position: absolute;
+    right: 14px;
+    bottom: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    opacity: 0.4;
+  }
+
+  /* =================== TYPOGRAPHY PANEL =================== */
+  .panel-type {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 40px;
+    background: #0f0d0a;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .type-specimen {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 72px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1;
+    color: var(--parchment);
+    letter-spacing: -0.03em;
+  }
+
+  .type-specimen span {
+    color: var(--warm-mid);
+  }
+
+  .type-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    opacity: 0.5;
+    margin-top: 16px;
+  }
+
+  .type-body-specimen {
+    font-family: 'Crimson Pro', serif;
+    font-size: 15px;
+    line-height: 1.7;
+    font-weight: 300;
+    color: rgba(240,234,216,0.7);
+    margin-top: 24px;
+    max-width: 320px;
+  }
+
+  .type-mono-specimen {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 300;
+    color: var(--glow);
+    opacity: 0.6;
+    letter-spacing: 0.05em;
+    margin-top: 24px;
+  }
+
+  /* =================== TEXTURE PANEL =================== */
+  .panel-texture {
+    grid-column: 2;
+    grid-row: 2;
+    min-height: 320px;
+    background: #141210;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .texture-canvas {
+    position: absolute;
+    inset: 0;
+  }
+
+  .texture-label {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    opacity: 0.5;
+    z-index: 2;
+  }
+
+  /* =================== GLITCH PANEL =================== */
+  .panel-glitch {
+    grid-column: 3;
+    grid-row: 2;
+    min-height: 320px;
+    background: #0a0907;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .glitch-demo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--parchment);
+    position: relative;
+    animation: glitch-idle 6s infinite;
+  }
+
+  .glitch-demo::before {
+    content: 'presence';
+    position: absolute;
+    inset: 0;
+    color: rgba(255,100,100,0.6);
+    animation: glitch-layer-1 6s infinite;
+  }
+
+  .glitch-demo::after {
+    content: 'presence';
+    position: absolute;
+    inset: 0;
+    color: rgba(100,220,255,0.5);
+    animation: glitch-layer-2 6s infinite;
+  }
+
+  @keyframes glitch-idle {
+    0%, 92%, 100% { transform: none; }
+    93% { transform: skewX(-1deg); }
+    94% { transform: skewX(1deg) translateX(-3px); }
+    95% { transform: none; }
+    97% { transform: translateX(2px); }
+    98% { transform: none; }
+  }
+
+  @keyframes glitch-layer-1 {
+    0%, 92%, 100% { transform: none; opacity: 0; clip-path: none; }
+    93% { opacity: 0.8; clip-path: inset(10% 0 70% 0); transform: translate(-4px, 1px); }
+    94% { clip-path: inset(50% 0 20% 0); transform: translate(3px, -1px); }
+    95%, 96% { opacity: 0.5; clip-path: inset(30% 0 45% 0); transform: translate(-2px, 0); }
+    97% { opacity: 0; }
+  }
+
+  @keyframes glitch-layer-2 {
+    0%, 93%, 100% { transform: none; opacity: 0; clip-path: none; }
+    94% { opacity: 0.7; clip-path: inset(60% 0 5% 0); transform: translate(4px, -1px); }
+    95% { clip-path: inset(20% 0 60% 0); transform: translate(-3px, 1px); }
+    96%, 97% { opacity: 0.4; clip-path: inset(40% 0 30% 0); transform: translate(2px, 0); }
+    98% { opacity: 0; }
+  }
+
+  .glitch-subtext {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(196,168,130,0.4);
+  }
+
+  /* =================== MOTION PANEL =================== */
+  .panel-motion {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    min-height: 200px;
+    background: #0c0a08;
+    display: flex;
+    align-items: center;
+    padding: 40px 48px;
+    gap: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .motion-line {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--warm-mid), transparent);
+    opacity: 0.15;
+  }
+
+  .motion-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+
+  .motion-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--warm-mid);
+    opacity: 0.5;
+  }
+
+  .motion-description {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 300;
+    color: var(--parchment);
+    line-height: 1.3;
+  }
+
+  .motion-description em {
+    font-style: italic;
+    color: var(--warm-mid);
+  }
+
+  .motion-divider {
+    width: 1px;
+    height: 60px;
+    background: rgba(196,168,130,0.2);
+    flex-shrink: 0;
+  }
+
+  /* =================== PHILOSOPHY PANEL =================== */
+  .panel-philosophy {
+    grid-column: 3;
+    grid-row: 3;
+    min-height: 200px;
+    background: var(--moss);
+    background: linear-gradient(135deg, #2a2d24 0%, #1a1c16 100%);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .philosophy-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    color: rgba(240,234,216,0.8);
+  }
+
+  .philosophy-attribution {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(196,168,130,0.4);
+    margin-top: 16px;
+  }
+
+  /* =================== COMPONENTS PANEL =================== */
+  .panel-components {
+    grid-column: 1 / 4;
+    grid-row: 4;
+    background: #0e0c09;
+    padding: 48px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .component-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .component-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(196,168,130,0.4);
+    margin-bottom: 4px;
+  }
+
+  /* Nav link style */
+  .demo-nav-link {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--parchment);
+    opacity: 0.6;
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    position: relative;
+    display: inline-block;
+  }
+  .demo-nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--glow);
+    transition: width 0.3s ease;
+  }
+  .demo-nav-link:hover { opacity: 1; }
+  .demo-nav-link:hover::after { width: 100%; }
+
+  /* Button styles */
+  .demo-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    border: 1px solid rgba(196,168,130,0.3);
+    background: transparent;
+    color: var(--parchment);
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .demo-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(196,168,130,0.08);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .demo-btn:hover::before { transform: scaleX(1); }
+  .demo-btn:hover { border-color: rgba(196,168,130,0.7); }
+
+  .demo-btn-solid {
+    background: var(--rust);
+    border-color: var(--rust);
+  }
+  .demo-btn-solid:hover { background: #a05535; border-color: #a05535; }
+
+  /* Tag */
+  .demo-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    background: rgba(196,168,130,0.1);
+    color: var(--warm-mid);
+    border: 1px solid rgba(196,168,130,0.2);
+  }
+  .demo-tag::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--glow);
+    flex-shrink: 0;
+  }
+
+  /* Input */
+  .demo-input {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(196,168,130,0.2);
+    color: var(--parchment);
+    padding: 8px 0;
+    width: 180px;
+    outline: none;
+    transition: border-color 0.3s;
+    letter-spacing: 0.05em;
+  }
+  .demo-input:focus { border-bottom-color: var(--glow); }
+  .demo-input::placeholder { color: rgba(196,168,130,0.3); }
+
+  /* Horizontal rule style */
+  .demo-rule {
+    width: 180px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--rust), transparent);
+    opacity: 0.6;
+  }
+
+  /* =================== LIGHT LEAK PANEL =================== */
+  .panel-lightleak {
+    grid-column: 1 / 4;
+    grid-row: 5;
+    height: 120px;
+    background: var(--void);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightleak-bar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+      radial-gradient(ellipse 20% 200% at 15% 50%, rgba(232,200,122,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 15% 200% at 45% 50%, rgba(200,100,60,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 25% 200% at 75% 50%, rgba(100,180,200,0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 10% 200% at 90% 50%, rgba(200,150,60,0.05) 0%, transparent 60%);
+  }
+
+  .lightleak-text {
+    position: relative;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(240,234,216,0.3);
+    z-index: 1;
+  }
+
+  /* Scanline hover effect on the whole page */
+  .panel:hover > .scanlines {
+    opacity: 1;
+  }
+
+  .scanlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.5s;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.03) 2px,
+      rgba(0,0,0,0.03) 4px
+    );
+  }
+
+  /* Progress bar element */
+  .demo-progress {
+    width: 180px;
+    height: 1px;
+    background: rgba(196,168,130,0.15);
+    position: relative;
+    overflow: hidden;
+  }
+  .demo-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(90deg, var(--rust), var(--glow));
+  }
+
+  /* =================== MOODBOARD HEADER =================== */
+  .moodboard-header {
+    grid-column: 1 / 4;
+    padding: 20px 24px;
+    background: var(--void);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(196,168,130,0.08);
+  }
+
+  .moodboard-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(196,168,130,0.4);
+  }
+
+  .moodboard-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: rgba(196,168,130,0.25);
+  }
+
+  /* Canvas for texture */
+  canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursorTrail"></div>
+
+<div class="moodboard">
+
+  <!-- Header -->
+  <div class="moodboard-header">
+    <div class="moodboard-title">NicholasDvorak.com — Visual Direction / Moodboard v0.1</div>
+    <div class="moodboard-meta">Warm Organic × Digital Disruption</div>
+  </div>
+
+  <!-- Hero -->
+  <div class="panel panel-hero">
+    <div class="hero-bg"></div>
+    <div class="hero-photo"></div>
+    <div class="scanlines"></div>
+    <div style="position:relative; z-index:2;">
+      <div class="hero-title">
+        <div class="glitch-word" data-text="Nicholas">Nicholas</div><br>
+        <em style="font-style:italic; color: var(--warm-mid);">Dvorak</em>
+      </div>
+    </div>
+    <div class="hero-sub">
+      Marketing · Photography · AI<br>
+      Seattle, WA · 47°N
+    </div>
+  </div>
+
+  <!-- Swatches -->
+  <div class="panel panel-swatches">
+    <div class="swatch" style="background:#1a1612;">
+      <span class="swatch-label" style="color:rgba(240,234,216,0.4);">Ink</span>
+      <span class="swatch-hex" style="color:rgba(240,234,216,0.25);">#1a1612</span>
+    </div>
+    <div class="swatch" style="background:#8b4a2b;">
+      <span class="swatch-label" style="color:rgba(240,234,216,0.7);">Rust</span>
+      <span class="swatch-hex" style="color:rgba(240,234,216,0.4);">#8b4a2b</span>
+    </div>
+    <div class="swatch" style="background:#c4a882;">
+      <span class="swatch-label" style="color:#1a1612;">Parchment Mid</span>
+      <span class="swatch-hex" style="color:rgba(26,22,18,0.5);">#c4a882</span>
+    </div>
+    <div class="swatch" style="background:#4a5240;">
+      <span class="swatch-label" style="color:rgba(240,234,216,0.7);">Moss</span>
+      <span class="swatch-hex" style="color:rgba(240,234,216,0.4);">#4a5240</span>
+    </div>
+    <div class="swatch" style="background:#e8c87a;">
+      <span class="swatch-label" style="color:#1a1612;">Glow</span>
+      <span class="swatch-hex" style="color:rgba(26,22,18,0.5);">#e8c87a</span>
+    </div>
+    <div class="swatch" style="background:#f0ead8;">
+      <span class="swatch-label" style="color:#1a1612;">Parchment</span>
+      <span class="swatch-hex" style="color:rgba(26,22,18,0.4);">#f0ead8</span>
+    </div>
+  </div>
+
+  <!-- Typography -->
+  <div class="panel panel-type">
+    <div>
+      <div class="type-meta">Display — Cormorant Garamond 300</div>
+      <div class="type-specimen">Aa <span>Bb</span></div>
+      <div class="type-body-specimen">
+        The intersection of ancient attention and machine intelligence — 
+        not as contradiction, but as the same inquiry wearing different clothes.
+      </div>
+      <div class="type-mono-specimen">
+        &gt; const self = await observe(mind);<br>
+        &gt; // lindy wins again
+      </div>
+    </div>
+    <div>
+      <div class="type-meta">Body — Crimson Pro 300 / Mono — JetBrains Mono 300</div>
+    </div>
+  </div>
+
+  <!-- Texture -->
+  <div class="panel panel-texture">
+    <canvas id="textureCanvas"></canvas>
+    <div class="texture-label">Noise / Grain / Organic texture</div>
+  </div>
+
+  <!-- Glitch -->
+  <div class="panel panel-glitch">
+    <div class="glitch-demo">presence</div>
+    <div class="glitch-subtext">Chromatic aberration — hover hero title</div>
+  </div>
+
+  <!-- Motion Principles -->
+  <div class="panel panel-motion">
+    <div class="motion-line"></div>
+    <div class="motion-item">
+      <div class="motion-label">Principle 01</div>
+      <div class="motion-description"><em>Slow</em> by default.<br>Glitch is the interrupt.</div>
+    </div>
+    <div class="motion-divider"></div>
+    <div class="motion-item">
+      <div class="motion-label">Principle 02</div>
+      <div class="motion-description">Photography breathes.<br><em>Form</em> does not compete.</div>
+    </div>
+    <div class="motion-divider"></div>
+    <div class="motion-item">
+      <div class="motion-label">Principle 03</div>
+      <div class="motion-description">Anchor scroll.<br><em>Time</em> is a design material.</div>
+    </div>
+    <div class="motion-divider"></div>
+    <div class="motion-item">
+      <div class="motion-label">Principle 04</div>
+      <div class="motion-description">Grain is honest.<br>Perfect is <em>suspect</em>.</div>
+    </div>
+  </div>
+
+  <!-- Philosophy -->
+  <div class="panel panel-philosophy">
+    <div>
+      <div class="philosophy-quote">
+        "The obstacle is the path. The machine is the medium. Neither owns the message."
+      </div>
+      <div class="philosophy-attribution">Design philosophy — ND 2026</div>
+    </div>
+    <div class="demo-tag">Zen × Lindy × AI</div>
+  </div>
+
+  <!-- Components -->
+  <div class="panel panel-components">
+    <div class="component-group">
+      <div class="component-label">Navigation</div>
+      <span class="demo-nav-link">Writing</span>
+      <span class="demo-nav-link">Photography</span>
+      <span class="demo-nav-link">Projects</span>
+      <span class="demo-nav-link">About</span>
+    </div>
+
+    <div class="component-group">
+      <div class="component-label">Buttons</div>
+      <button class="demo-btn">Read essay →</button>
+      <button class="demo-btn demo-btn-solid">View gallery</button>
+    </div>
+
+    <div class="component-group">
+      <div class="component-label">Input</div>
+      <input class="demo-input" placeholder="Search writing..." />
+      <div class="demo-rule" style="margin-top:8px;"></div>
+    </div>
+
+    <div class="component-group">
+      <div class="component-label">Tags / Progress</div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; max-width:200px;">
+        <span class="demo-tag">AI</span>
+        <span class="demo-tag">Photography</span>
+        <span class="demo-tag">Zen</span>
+      </div>
+      <div style="margin-top:12px;">
+        <div class="type-meta" style="margin-bottom:8px;">Reading progress</div>
+        <div class="demo-progress"></div>
+      </div>
+    </div>
+
+    <div class="component-group" style="margin-left:auto;">
+      <div class="component-label">Light leak / prismatic</div>
+      <div style="width:160px; height:80px; position:relative; overflow:hidden; background:#0a0907;">
+        <div style="position:absolute; inset:0; background: linear-gradient(135deg, rgba(255,100,80,0.3) 0%, rgba(255,200,80,0.2) 25%, rgba(80,255,180,0.15) 50%, rgba(80,120,255,0.2) 75%, rgba(200,80,255,0.15) 100%); filter:blur(8px);"></div>
+        <div style="position:absolute; inset:0; background: repeating-linear-gradient(87deg, transparent, transparent 3px, rgba(255,255,255,0.02) 3px, rgba(255,255,255,0.02) 4px);"></div>
+      </div>
+      <div class="type-meta" style="margin-top:8px;">Prismatic / refraction accent</div>
+    </div>
+  </div>
+
+  <!-- Light leak footer -->
+  <div class="panel panel-lightleak">
+    <div class="lightleak-bar"></div>
+    <div class="lightleak-text">light · grain · interruption · presence</div>
+  </div>
+
+</div>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const trail = document.getElementById('cursorTrail');
+  let mx = 0, my = 0, tx = 0, ty = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animateTrail() {
+    tx += (mx - tx) * 0.12;
+    ty += (my - ty) * 0.12;
+    trail.style.left = tx + 'px';
+    trail.style.top = ty + 'px';
+    requestAnimationFrame(animateTrail);
+  }
+  animateTrail();
+
+  // Texture canvas — organic noise
+  const canvas = document.getElementById('textureCanvas');
+  const ctx = canvas.getContext('2d');
+
+  function resizeCanvas() {
+    canvas.width = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    drawTexture();
+  }
+
+  function drawTexture() {
+    const w = canvas.width, h = canvas.height;
+    const imageData = ctx.createImageData(w, h);
+    const data = imageData.data;
+
+    for (let i = 0; i < data.length; i += 4) {
+      const x = (i / 4) % w;
+      const y = Math.floor((i / 4) / w);
+
+      // Organic noise approximation
+      const n1 = Math.sin(x * 0.04) * Math.cos(y * 0.04) * 127 + 128;
+      const n2 = Math.sin(x * 0.08 + 1.5) * Math.cos(y * 0.06 + 0.7) * 60;
+      const n3 = Math.sin(x * 0.15 + y * 0.1) * 30;
+      const noise = (Math.random() * 40) - 20;
+
+      const base = (n1 * 0.3 + n2 * 0.4 + n3 * 0.3 + 128) / 255;
+      const warm = base * 196 + noise * 0.3;
+      const green = base * 168 + noise * 0.2;
+      const blue = base * 130 + noise * 0.1;
+
+      data[i] = Math.max(10, Math.min(255, warm));
+      data[i+1] = Math.max(8, Math.min(255, green));
+      data[i+2] = Math.max(5, Math.min(255, blue));
+      data[i+3] = 180;
+    }
+
+    ctx.putImageData(imageData, 0, 0);
+
+    // Dark vignette overlay
+    const grad = ctx.createRadialGradient(w/2, h/2, 0, w/2, h/2, Math.max(w,h)*0.7);
+    grad.addColorStop(0, 'rgba(0,0,0,0)');
+    grad.addColorStop(1, 'rgba(0,0,0,0.6)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, w, h);
+  }
+
+  window.addEventListener('resize', resizeCanvas);
+  setTimeout(resizeCanvas, 100);
+</script>
+</body>
+</html>
