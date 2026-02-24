@@ -53,10 +53,13 @@ export function ThemeProvider({ children }) {
 
             // Calculate harmonies based on HSL relationships to the provided base color
             // E.g., if base is a warm beige, ink should be a very dark, slightly desaturated version
-            const ink = base.set('hsl.l', 0.1).set('hsl.s', base.get('hsl.s') * 0.5).hex();
-            const parchment = base.set('hsl.l', 0.9).set('hsl.s', base.get('hsl.s') * 0.3).hex();
-            const rust = base.set('hsl.h', base.get('hsl.h') - 20).set('hsl.l', 0.4).set('hsl.s', Math.min(1, base.get('hsl.s') * 1.5)).hex();
-            const moss = base.set('hsl.h', base.get('hsl.h') + 90).set('hsl.l', 0.3).set('hsl.s', base.get('hsl.s') * 0.4).hex();
+            const h = isNaN(base.get('hsl.h')) ? 0 : base.get('hsl.h');
+            const s = isNaN(base.get('hsl.s')) ? 0 : base.get('hsl.s');
+
+            const ink = base.set('hsl.l', 0.1).set('hsl.s', s * 0.5).hex();
+            const parchment = base.set('hsl.l', 0.9).set('hsl.s', s * 0.3).hex();
+            const rust = base.set('hsl.h', h - 20).set('hsl.l', 0.4).set('hsl.s', Math.min(1, s * 1.5)).hex();
+            const moss = base.set('hsl.h', h + 90).set('hsl.l', 0.3).set('hsl.s', s * 0.4).hex();
             const chrome = base.set('hsl.l', 0.8).desaturate(2).hex();
             const voidColor = base.set('hsl.l', 0.05).desaturate(1).hex();
             const glow = base.set('hsl.l', 0.7).saturate(1).hex();
