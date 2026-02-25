@@ -50,14 +50,27 @@ function PointsGroup({ count = 200 }) {
         return [pos, new Float32Array(conns)];
     }, [count]);
 
-    useFrame((state, delta) => {
-        if (pointsRef.current) {
-            pointsRef.current.rotation.y += delta * 0.05;
-            pointsRef.current.rotation.x += delta * 0.02;
-        }
-        if (linesRef.current) {
-            linesRef.current.rotation.y += delta * 0.05;
-            linesRef.current.rotation.x += delta * 0.02;
+    useFrame((state) => {
+        if (pointsRef.current && linesRef.current) {
+            const time = state.clock.elapsedTime;
+
+            // Base idle rotation
+            const idleRotX = time * 0.02;
+            const idleRotY = time * 0.05;
+
+            // Pointer mapped offsets
+            const pointerOffsetX = state.pointer.y * 0.5;
+            const pointerOffsetY = state.pointer.x * 0.5;
+
+            // Target rotation for smooth lerp
+            const targetRotX = idleRotX + pointerOffsetX;
+            const targetRotY = idleRotY + pointerOffsetY;
+
+            pointsRef.current.rotation.x += (targetRotX - pointsRef.current.rotation.x) * 0.1;
+            pointsRef.current.rotation.y += (targetRotY - pointsRef.current.rotation.y) * 0.1;
+
+            linesRef.current.rotation.x += (targetRotX - linesRef.current.rotation.x) * 0.1;
+            linesRef.current.rotation.y += (targetRotY - linesRef.current.rotation.y) * 0.1;
         }
     });
 

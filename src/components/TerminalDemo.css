@@ -81,7 +81,7 @@
     align-items: center;
 }
 
-.cursor {
+.terminal-cursor {
     display: inline-block;
     width: 8px;
     height: 14px;

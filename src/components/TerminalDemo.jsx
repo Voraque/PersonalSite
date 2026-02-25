@@ -36,7 +36,7 @@ export default function TerminalDemo() {
                 {/* Blinking cursor */}
                 <div className="terminal-line terminal-cursor-line">
                     <span className="prompt">&gt; </span>
-                    <span className="cursor">█</span>
+                    <span className="terminal-cursor">█</span>
                 </div>
             </div>
 
