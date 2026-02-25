@@ -14,14 +14,17 @@ import ComponentsDemo from './components/ComponentsDemo';
 import LightLeakPanel from './components/LightLeakPanel';
 import GalleryDemo from './components/GalleryDemo';
 import PrismDemo from './components/PrismDemo';
+import NodeGraph from './components/NodeGraph';
+import LiquidDemo from './components/LiquidDemo';
+import TerminalDemo from './components/TerminalDemo';
 
-// Simple wrapper for scroll reveal animations
-const FadeInScroll = ({ children }) => (
+// Simple wrapper for elegant, tasteful scroll reveal animations
+const FadeInScroll = ({ children, delay = 0 }) => (
   <motion.div
-    initial={{ opacity: 0, y: 50 }}
-    whileInView={{ opacity: 1, y: 0 }}
+    initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
+    whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
     viewport={{ once: true, margin: "-100px" }}
-    transition={{ duration: 1.2, ease: [0.33, 1, 0.68, 1] }}
+    transition={{ duration: 1.4, delay, ease: [0.22, 1, 0.36, 1] }} // smooth "tasteful" ease-out
   >
     {children}
   </motion.div>
@@ -58,13 +61,26 @@ function App() {
 
         {/* New Prism Refraction Panel wrapped in grid context manually to span */}
         <div style={{ gridColumn: '2 / 4' }}>
-          <FadeInScroll>
+          <FadeInScroll delay={0.1}>
             <PrismDemo />
           </FadeInScroll>
         </div>
 
+        {/* Phase 3: Liquid Glass Refraction */}
+        <div style={{ gridColumn: '1 / 3' }}>
+          <FadeInScroll delay={0.2}>
+            <LiquidDemo />
+          </FadeInScroll>
+        </div>
+
+        {/* Phase 3: Machine Vision / Node Graph */}
+        <NodeGraph />
+
         {/* Gallery */}
         <GalleryDemo />
+
+        {/* Phase 3: Terminal Aesthetic */}
+        <TerminalDemo />
 
         {/* Footers */}
         <ComponentsDemo />

@@ -1,0 +1,126 @@
+.panel-terminal {
+    grid-column: 1 / 3;
+    grid-row: 8;
+    height: 320px;
+    background: #000000;
+    /* Pure black for maximum contrast */
+    border: 1px solid rgba(255, 140, 0, 0.2);
+    /* Amber border */
+    position: relative;
+    overflow: hidden;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Phosphor/Amber glow effect */
+.panel-terminal::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255, 120, 0, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* CRT Scanlines */
+.panel-terminal::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(0deg,
+            rgba(0, 0, 0, 0.1),
+            rgba(0, 0, 0, 0.1) 1px,
+            transparent 1px,
+            transparent 2px);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255, 140, 0, 0.3);
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 3;
+}
+
+.terminal-title,
+.terminal-status {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #ff8c00;
+    /* Amber */
+    text-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+}
+
+.terminal-status {
+    animation: pulse-amber 2s infinite;
+}
+
+.terminal-body {
+    flex: 1;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    line-height: 1.8;
+    color: #ffaa00;
+    text-shadow: 0 0 4px rgba(255, 170, 0, 0.4);
+    position: relative;
+    z-index: 3;
+}
+
+.terminal-line {
+    margin-bottom: 4px;
+}
+
+.terminal-cursor-line {
+    display: flex;
+    align-items: center;
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 14px;
+    background-color: #ffaa00;
+    margin-left: 4px;
+    box-shadow: 0 0 8px rgba(255, 170, 0, 0.6);
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-amber {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+        text-shadow: 0 0 8px rgba(255, 140, 0, 0.8);
+    }
+}
+
+/* Vignette overlay */
+.terminal-overlay {
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.9);
+    pointer-events: none;
+    z-index: 4;
+}
